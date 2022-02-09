@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 **deploy: [https://learning-english-bymariia.netlify.app](https://learning-english-bymariia.netlify.app)**
 
 (this site works only in google browser for now)

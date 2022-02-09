@@ -1,0 +1,9 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ES6",
+    "outDir": "src/scripts",
+    "sourceMap": true,
+    "noUnusedLocals": false,
+  },
+}

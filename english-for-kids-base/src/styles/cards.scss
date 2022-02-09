@@ -1,0 +1,600 @@
+html {
+  position: relative;
+  height: auto;
+}
+body {
+  width: 80%;
+  height: 770px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, #0e0e0e, #14b136);
+
+  font-family: "Roboto", sans-serif;
+
+  .finishImg {
+    visibility: hidden;
+  }
+
+  .finishOpen {
+    position: fixed;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background: transparent;
+    z-index: 4000;
+
+    // background: url("./images/congrats.jpg");
+    .finishImg {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+
+      top: 25%;
+      left: 25%;
+
+      visibility: visible;
+      z-index: 3;
+    }
+
+    .errorMsg {
+      position: absolute;
+      top: 65%;
+      left: 52%;
+
+      width: 31%;
+      height: 11%;
+      text-align: center;
+
+      transform: rotate(-15deg);
+
+      font-size: 70px;
+      color: #500401;
+      font-weight: bold;
+
+      background: linear-gradient(45deg, red, yellow);
+      border-radius: 20px;
+    }
+  }
+
+  &.playMode {
+    background: linear-gradient(to bottom, rgb(77, 1, 1), orange);
+
+    .main {
+      .page {
+        .cardContainer:hover {
+          .canvContainer {
+            box-shadow: 0 7px 12px 7px rgb(77, 1, 1);
+          }
+
+          .categoriesPageCont {
+            canvas {
+              height: 80%;
+            }
+          }
+        }
+
+        .playBtn {
+          visibility: visible !important;
+        }
+        .cardContainer {
+          &.checked {
+            .checkedBg {
+              z-index: 5;
+              cursor: default;
+              visibility: visible;
+            }
+          }
+        }
+      }
+
+      .attempts {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        height: 30px;
+        width: 100%;
+
+        overflow-x: auto;
+        display: flex;
+
+        .attempt {
+          margin: 0 5px;
+
+          fill: orange;
+        }
+      }
+
+      .categoriesPageCont {
+        .cardContainer {
+          .canvContainer {
+            canvas {
+              height: 79%;
+            }
+          }
+        }
+      }
+    }
+
+    .menu {
+      background: linear-gradient(to bottom, orange, rgb(77, 1, 1));
+    }
+
+    .footer {
+      background: linear-gradient(to bottom, rgb(31, 1, 1), rgb(58, 2, 2));
+
+      .courseLink:hover {
+        .courseImg {
+          fill: orange;
+        }
+      }
+      .githubLink:hover {
+        color: orange;
+      }
+    }
+  }
+
+  &.openedMenu {
+    .burgerMenuItem {
+      position: absolute;
+      &#burgerMenuItem2 {
+        visibility: hidden;
+        transition: 0s;
+      }
+      &#burgerMenuItem1 {
+        top: 44%;
+        transform: rotate(45deg);
+      }
+      &#burgerMenuItem3 {
+        top: 44%;
+        transform: rotate(-45deg);
+      }
+    }
+
+    .menu {
+      left: 0;
+
+      .navMenu {
+        position: sticky;
+      }
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: -300px;
+
+  width: 300px;
+  height: 100%;
+
+  // background: linear-gradient(to bottom, orange, red);
+  background: linear-gradient(to bottom, #14b136, #0e0e0e);
+  border-right: 3px solid yellow;
+  transition: 0.7s;
+  z-index: 2000;
+
+  .navMenu {
+    position: absolute;
+    top: 150px;
+    left: 50px;
+
+    list-style: none;
+    margin-left: 15%;
+
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+
+    .navMenuItem {
+      margin-bottom: 10%;
+      width: 50%;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+      &.navMenuItemActive {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.header {
+  position: relative;
+  height: 10%;
+  width: 100%;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  margin-bottom: 20px;
+
+  .burgerMenu {
+    position: absolute;
+    left: 0px;
+    top: 50px;
+
+    width: 35px;
+    height: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    z-index: 3000;
+
+    .burgerMenuItem {
+      background-color: rgb(194, 189, 189);
+      width: 100%;
+      height: 4px;
+      border-radius: 5px;
+
+      transition: 0.7s;
+
+      transform: none;
+    }
+  }
+
+  .switchMode {
+    position: absolute;
+    top: 50px;
+    right: 0px;
+
+    width: 100px;
+    height: 50px;
+
+    .switchModeInput {
+      width: 50%;
+    }
+  }
+}
+
+.main {
+  position: relative;
+
+  width: 100%;
+  height: 68%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .blockCont {
+    position: relative;
+    height: 450px;
+
+    visibility: hidden;
+    padding: 50px 0 0 0;
+
+    .block {
+      position: relative;
+      height: 450px;
+      // max-width: 1063px;
+
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      // grid-gap: 1em;
+      grid-gap: 1rem;
+      grid-auto-flow: dense;
+
+      .cardContainer {
+        position: relative;
+
+        height: 200px;
+
+        border-radius: 10px;
+        // box-shadow: 0 2px 5px 2px #8a8787;
+
+        transition: 0.7s;
+
+        .checkedBg {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+
+          background: white;
+          opacity: 0.6;
+          cursor: pointer;
+          border-radius: 10px;
+
+          z-index: 0;
+          visibility: hidden;
+        }
+
+        .canvContainer {
+          position: absolute;
+          left: 0;
+          top: 0;
+
+          width: 100%;
+          height: 200px;
+
+          transition: 1s;
+          backface-visibility: hidden;
+          border-radius: 10px;
+          background-color: white;
+          box-shadow: 0 2px 5px 2px #b1acac;
+
+          &.frontCard {
+            z-index: 2;
+          }
+          &.backCard {
+            z-index: 1;
+          }
+
+          canvas {
+            margin: 20px auto;
+            width: 100%;
+            height: 70%;
+          }
+
+          .cardName {
+            display: inline-block;
+            position: absolute;
+            bottom: 10px;
+            margin: 0 auto;
+
+            width: 100%;
+
+            font-size: 20px;
+            text-align: center;
+          }
+
+          .flipBtn {
+            position: absolute;
+            bottom: 9px;
+            right: 15px;
+
+            width: 25px;
+            height: 25px;
+
+            svg {
+              fill: gray;
+            }
+          }
+          .flipBtn:hover {
+            svg {
+              fill: rgb(50, 221, 50);
+            }
+          }
+        }
+
+        .flipFront {
+          transform: rotateY(360deg);
+          z-index: 2 !important;
+        }
+        .flipBack {
+          transform: rotateY(180deg);
+          z-index: 1 !important;
+        }
+      }
+
+      .cardContainer:hover {
+        cursor: pointer;
+
+        .canvContainer {
+          box-shadow: 0 7px 12px 7px rgb(3, 63, 5);
+        }
+      }
+    }
+
+    .playBtn {
+      position: absolute;
+      bottom: 0px;
+      left: 10%;
+
+      width: 80%;
+      height: 30px;
+
+      text-transform: uppercase;
+      cursor: pointer;
+      color: white;
+      visibility: hidden;
+
+      background-color: red;
+      border-radius: 5px;
+
+      outline: none;
+      border: 1px solid orange;
+
+      &.replayBtn {
+        width: 70%;
+        left: 15%;
+      }
+    }
+
+    &.page {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 95%;
+    }
+  }
+
+  .page {
+    visibility: visible;
+
+    .canvContainer {
+      z-index: 1000;
+    }
+  }
+}
+
+.switchMode {
+  width: 100px;
+  height: 40px;
+}
+.switchModeSpan {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100px;
+  height: 40px;
+
+  background-color: #4da560;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+
+  border-radius: 5px;
+}
+.switchModeSpan:before {
+  position: absolute;
+  content: "Train";
+
+  left: 6px;
+  bottom: 3px;
+
+  height: 70%;
+  width: 45%;
+
+  background-color: #172c0a;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 5px;
+
+  color: white;
+  text-align: center;
+  padding-top: 5%;
+}
+
+// input:checked .switchModeSpan:before {
+//   position: absolute;
+//   content: "Play";
+//   height: 20px;
+//   width: 20px;
+//   left: 6px;
+//   bottom: 5px;
+//   background-color: red;
+//   -webkit-transition: 0.4s;
+//   transition: 0.4s;
+// }
+
+input:checked + .switchModeSpan {
+  background-color: orange;
+}
+input:focus + .switchModeSpan {
+  box-shadow: 0 0 1px orange;
+}
+
+input:checked + .switchModeSpan:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(43px);
+
+  background-color: rgb(77, 1, 1);
+  content: "Play";
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+
+  height: 13%;
+  width: 100vw;
+
+  background: linear-gradient(to bottom, #0e0e0e, #012409);
+
+  .footerItemCont {
+    display: flex;
+    justify-content: space-between;
+
+    position: absolute;
+    right: 10%;
+    top: 35%;
+
+    width: 220px;
+    height: 40px;
+
+    color: white;
+
+    .githubLink {
+      text-decoration: none;
+      color: white;
+    }
+
+    .courseImg {
+      width: 60px;
+      height: 30px;
+
+      fill: white;
+
+      g {
+        fill: black;
+      }
+    }
+
+    .courseLink:hover {
+      .courseImg {
+        fill: yellowgreen;
+      }
+    }
+    .githubLink:hover {
+      color: yellowgreen;
+    }
+  }
+}
+
+@media screen and (min-width: 1329px) {
+  .block {
+    grid-template-columns: repeat(4, 24%) !important;
+  }
+}
+@media screen and (max-width: 1059px) {
+  body {
+    height: 1070px;
+
+    .header {
+      height: 10%;
+    }
+    .main {
+      height: 70%;
+    }
+  }
+}
+@media screen and (max-width: 789px) {
+  body {
+    height: 1270px;
+
+    .header {
+      height: 7%;
+    }
+    .main {
+      height: 76%;
+      .page {
+        height: 94%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 520px) {
+  body {
+    height: 2250px;
+
+    .header {
+      height: 4%;
+    }
+    .main {
+      height: 83%;
+      .page {
+        height: 96.5% !important;
+      }
+    }
+    .footer {
+      height: 10%;
+    }
+  }
+}
